@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="color-scheme" content="light dark" />
+  <title>KevT Budget Pro</title>
+
+  <!-- Styles — loaded in order -->
+  <link rel="stylesheet" href="src/styles/tokens.css" />
+  <link rel="stylesheet" href="src/styles/base.css" />
+  <link rel="stylesheet" href="src/styles/components.css" />
+  <link rel="stylesheet" href="src/styles/layout.css" />
+  <link rel="stylesheet" href="src/styles/animations.css" />
+
+  <!-- Chart.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" defer></script>
+  <!-- SheetJS (CSV/XLSX) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
+
+</head>
+<body>
+
+  <!-- App root — all DOM injected here by ui.js -->
+  <div id="app"></div>
+
+  <!-- Entry point — type="module" enables ES module imports -->
+  <script type="module" src="app.js"></script>
+
+</body>
+</html>
+
+  <!-- Splash Screen -->
+  <div id="splash-screen" class="splash-screen">
+    <div class="splash-logo">💰</div>
+    <h1 class="splash-title">KevT Budget Pro</h1>
+    <p class="splash-subtitle">Loading your budget...</p>
+    <div class="splash-loading">
+      <div class="splash-loading-bar"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    // Fade out splash screen after app loads
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const splash = document.getElementById('splash-screen');
+        if (splash) {
+          splash.classList.add('fade-out');
+          setTimeout(() => splash.remove(), 1000);
+        }
+      }, 500);
+    });
+  </script>
